@@ -34,15 +34,12 @@ public class CompanyFacade extends ClientFacade {
 
 	// updating a coupon in a company
 	public void updateCoupon(Coupon coupon) throws	cantUpdateCouponException, companyWasNotFoundException, cantUpdateCompanyIdException {
-//		List<Coupon> couponsToUpdate = companyDB.getCompanyById(companyId).getCoupons();
-//		for (Coupon coupon2 : couponsToUpdate) {
-//			if (coupon2.getCompany().getCompanyId() == coupon.getCompany().getCompanyId()) {
-//				throw new cantUpdateCouponException();
-//			}
-//		}
-//		System.out.println(coupon);
-//		Scanner s = new Scanner(System.in);
-//		s.next();
+		List<Coupon> couponsToUpdate = companyDB.getCompanyById(companyId).getCoupons();
+		for (Coupon coupon2 : couponsToUpdate) {
+			if (coupon2.getCompany().getCompanyId() == coupon.getCompany().getCompanyId()) {
+				throw new cantUpdateCouponException();
+			}
+		}
 		couponDB.updateCoupon(coupon);
 		Company comp = getCompanyDetails();
 		companyDB.updateCompany(comp);
